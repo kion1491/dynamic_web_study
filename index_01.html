@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      position: relative;
+      background-color: #000;
+      /* cursor: none; */
+    }
+
+    h1 {
+      color: #fff;
+    }
+
+    .cursor_item {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      top: 0;
+      left: 0;
+      margin: -50px 0 0 -50px;
+      transition: all 1s ease-in-out;
+    }
+  </style>
+  <script>
+    let cursor_item;
+    let h1;
+    let x = 0;
+    let y = 0;
+    let mx = 0;
+    let my = 0;
+    let speed = 0.03;
+    window.onload = function () {
+      h1 = document.getElementsByTagName("h1")[0];
+      cursor_item = document.getElementsByClassName("cursor_item")[0];
+
+      window.addEventListener("click", mouseFunc, false);
+
+      function mouseFunc(e) {
+        x = e.clientX;
+        y = e.clientY;
+        cursor_item.style.transform = `translate(${x}px, ${y}px)`;
+        // console.log(e.clientX);
+      }
+      // loop();
+    }
+
+    // 마우스가 웹브라우져 바깥에 있다가 갑자기 들어왔을때, 부드럽고 자연스럽게 마우스를 따라오도록 하는 코드
+    // function loop() {
+    //   h1.innerHTML = `X 값: ${mx},  Y 값: ${my}`;
+    //   mx += (x - mx) * speed;
+    //   my += (y - my) * speed;
+    //   cursor_item.style.transform = `translate(${mx}px, ${my}px)`;
+    //   window.requestAnimationFrame(loop);
+    // }
+  </script>
+</head>
+
+<body>
+  <h1>X 값: , Y 값: </h1>
+  <div class="cursor_item">
+
+  </div>
+</body>
+
+</html>
