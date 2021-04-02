@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 10000px;
+      background: linear-gradient(150deg, red, orange, yellow, green, indigo, skyblue, black);
+    }
+
+    h1 {
+      color: #fff;
+
+    }
+
+    .progress {
+      width: 100%;
+      position: fixed;
+      width: 4px;
+      height: 140px;
+      top: 40%;
+      left: 20px;
+      background-color: #000;
+      z-index: 10;
+    }
+
+    .bar {
+      position: absolute;
+      width: 4px;
+      height: 0px;
+      top: 0;
+      left: 0;
+      background-color: yellow;
+      z-index: 11;
+    }
+  </style>
+
+  <script>
+    let scrollTop = 0;
+    let bar;
+
+    window.onload = function () {
+      bar = document.getElementsByClassName("bar")[0];
+    }
+
+    window.addEventListener("scroll", function (e) {
+      scrollTop = document.documentElement.scrollTop;
+      console.log(scrollTop)
+      let per = Math.round(scrollTop / (document.documentElement.scrollHeight - window.outerHeight) * 100);
+
+      bar.style.height = per + "%";
+    }, false);
+  </script>
+</head>
+
+<body>
+  <!-- 스크롤 탑 값을 이용한 '세로 진행 바' 구하기 -->
+  <!-- 
+    공식이 있다.
+
+    가로 퍼센트 값 = 현재 스크롤 탑 위치 / (문서 전체 길이 - 윈도우 창 높이) * 100;
+
+    per = Math.round(scrollTop / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+   -->
+  <h1>스크롤</h1>
+  <div class="progress">
+    <span class="bar"></span>
+  </div>
+</body>
+
+</html>
